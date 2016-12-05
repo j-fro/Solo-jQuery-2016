@@ -38,11 +38,13 @@ function removeColorClicked() {
 }
 
 function getTotalBoxCount() {
-  var totalCount = 0;
-  $('.color-button').each(function() {
-    totalCount += colorTotals[$(this).data('color')];
-  });
-  return totalCount;
+    var totalCount = 0;
+    // Iterate through the color buttons (for color names) and sum up the box
+    // counts
+    $('.color-button').each(function() {
+        totalCount += colorTotals[$(this).data('color')];
+    });
+    return totalCount;
 }
 
 function colorTotalSetup() {
