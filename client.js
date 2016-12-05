@@ -22,7 +22,8 @@ function addColorClicked() {
     $('.container').append('<div class="color-cube ' + color + '" data-color="' + color + '"></div>');
     // Increment and update the color counter
     colorTotals[color]++;
-    $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
+    var niceColor = getNiceColor(color);
+    $('#' + color).text('Total ' + niceColor + ': ' + colorTotals[color]);
     // Get and update the total box count
     $('#total').text('Total blocks: ' + getTotalBoxCount());
 }
@@ -34,7 +35,8 @@ function removeColorClicked() {
     $(this).remove();
     // Decrement and update the color counter
     colorTotals[color]--;
-    $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
+    var niceColor = getNiceColor(color);
+    $('#' + color).text('Total ' + niceColor + ': ' + colorTotals[color]);
     // Get and update the total box count
     $('#total').text('Total blocks: ' + getTotalBoxCount());
 }
@@ -60,11 +62,16 @@ function colorTotalSetup() {
 function addMoreColors() {
     colorsToAdd.forEach(function(color) {
         // Capitalize the first letter of the color
-        var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
-        niceColor = niceColor.replace(/-/g, ' ');
+        var niceColor = getNiceColor(color);
         // Add the counter for the color (before the total counter)
         $('#total').before('<p id="' + color + '">Total ' + niceColor + ': 0</p>');
         // Add the button for the color (after the last button)
         $('.color-button').last().after('<button class="color-button " data-color="' + color + '">' + niceColor + '</button>');
     });
+}
+
+function getNiceColor(color) {
+  var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
+  niceColor = niceColor.replace(/-/g, ' ');
+  return niceColor;
 }
