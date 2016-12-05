@@ -2,6 +2,7 @@ var colorTotals = {};
 
 $(document).ready(function() {
     // Add color attributes to colorTotals
+    addMoreColors();
     colorTotalSetup();
     // Turn on buttons
     enableButtons();
@@ -52,5 +53,14 @@ function colorTotalSetup() {
     // color
     $('.color-button').each(function(button) {
         colorTotals[$(this).data('color')] = 0;
+    });
+}
+
+function addMoreColors() {
+    var colorsToAdd = ['cyan', 'magenta', 'papayawhip'];
+    colorsToAdd.forEach(function(color) {
+      var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
+      $('#total').before('<p id="' + color + '">Total ' + niceColor + ': 0</p>');
+      $('.color-button').last().after('<button class="color-button " data-color="' + color + '">' + niceColor + '</button>');
     });
 }
