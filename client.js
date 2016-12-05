@@ -66,7 +66,7 @@ function addMoreColors() {
         // Add the counter for the color (before the total counter)
         $('#total').before('<p id="' + color + '">Total ' + niceColor + ': 0</p>');
         // Add the button for the color (after the last button)
-        $('.color-button').last().after('<button class="color-button " data-color="' + color + '">' + niceColor + '</button>');
+        $('.color-button').last().after('<button class="color-button btn" data-color="' + color + '">' + niceColor + '</button>');
     });
 }
 

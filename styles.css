@@ -3,6 +3,7 @@
   height: 100px;
   display: inline-block;
   border: 1px solid black;
+  border-radius: 20%;
 }
 
 .red {
@@ -35,4 +36,18 @@
 
 .mermaid-treasure {
   background-color: #00acb0;
+}
+
+.button-bar {
+  display: inline-block;;
+  margin: auto;
+}
+
+.button-bar button {
+  margin: 5px;
+}
+
+p {
+  padding: 20px;
+  display: inline-block;
 }
