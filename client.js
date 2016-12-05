@@ -1,4 +1,5 @@
 var colorTotals = {};
+var colorsToAdd = ['cyan', 'magenta', 'papaya-whip', 'mermaid-treasure'];
 
 $(document).ready(function() {
     // Add color attributes to colorTotals
@@ -57,10 +58,10 @@ function colorTotalSetup() {
 }
 
 function addMoreColors() {
-    var colorsToAdd = ['cyan', 'magenta', 'papayawhip'];
     colorsToAdd.forEach(function(color) {
         // Capitalize the first letter of the color
         var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
+        niceColor = niceColor.replace(/-/g, ' ');
         // Add the counter for the color (before the total counter)
         $('#total').before('<p id="' + color + '">Total ' + niceColor + ': 0</p>');
         // Add the button for the color (after the last button)
