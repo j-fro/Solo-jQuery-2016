@@ -9,16 +9,27 @@ $(document).ready(function() {
 
 function enableButtons() {
     // Wire up color buttons
-    $(document).on('click', '.color-button', colorClicked);
+    $(document).on('click', '.color-button', addColorClicked);
+    $(document).on('click', '.color-cube', removeColorClicked);
 }
 
-function colorClicked() {
+function addColorClicked() {
     // Get the color from the clicked button
     var color = $(this).data('color');
     // Add the colored box to the DOM
-    $('.container').append('<div class="color-cube ' + color + '"></div>');
+    $('.container').append('<div class="color-cube ' + color + '" data-color="' + color + '"></div>');
     // Increment and update the color counter
     colorTotals[color]++;
+    $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
+}
+
+function removeColorClicked() {
+    // Get the color from the clicked block
+    var color = $(this).data('color');
+    // Take the block off the DOM
+    $(this).remove();
+    // Decrement and update the color counter
+    colorTotals[color]--;
     $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
 }
 
