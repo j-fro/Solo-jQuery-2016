@@ -20,6 +20,8 @@ function addColorClicked() {
     var color = $(this).data('color');
     // Add the colored box to the DOM
     $('.container').append('<div class="color-cube ' + color + '" data-color="' + color + '"></div>');
+    $('.container').children().last().hide();
+    $('.container').children().last().fadeIn();
     // Increment and update the color counter
     colorTotals[color]++;
     var niceColor = getNiceColor(color);
@@ -32,7 +34,9 @@ function removeColorClicked() {
     // Get the color from the clicked block
     var color = $(this).data('color');
     // Take the block off the DOM
-    $(this).remove();
+    $(this).fadeOut('fast', function() {
+        $(this).remove();
+    });
     // Decrement and update the color counter
     colorTotals[color]--;
     var niceColor = getNiceColor(color);
@@ -71,7 +75,7 @@ function addMoreColors() {
 }
 
 function getNiceColor(color) {
-  var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
-  niceColor = niceColor.replace(/-/g, ' ');
-  return niceColor;
+    var niceColor = color[0].toUpperCase() + color.substring(1, color.length);
+    niceColor = niceColor.replace(/-/g, ' ');
+    return niceColor;
 }
