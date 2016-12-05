@@ -21,6 +21,8 @@ function addColorClicked() {
     // Increment and update the color counter
     colorTotals[color]++;
     $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
+    // Get and update the total box count
+    $('#total').text('Total blocks: ' + getTotalBoxCount());
 }
 
 function removeColorClicked() {
@@ -31,6 +33,16 @@ function removeColorClicked() {
     // Decrement and update the color counter
     colorTotals[color]--;
     $('#' + color).text('Total ' + color + ': ' + colorTotals[color]);
+    // Get and update the total box count
+    $('#total').text('Total blocks: ' + getTotalBoxCount());
+}
+
+function getTotalBoxCount() {
+  var totalCount = 0;
+  $('.color-button').each(function() {
+    totalCount += colorTotals[$(this).data('color')];
+  });
+  return totalCount;
 }
 
 function colorTotalSetup() {
